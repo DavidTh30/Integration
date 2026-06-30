@@ -1,0 +1,289 @@
+object Form1: TForm1
+  Left = 221
+  Height = 520
+  Top = 119
+  Width = 575
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Integration'
+  ClientHeight = 520
+  ClientWidth = 575
+  Position = poWorkAreaCenter
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  object Button1: TButton
+    Left = 8
+    Height = 23
+    Top = 48
+    Width = 80
+    Caption = '0.5-1.5∫ydx '
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    AnchorSideLeft.Control = Button1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 91
+    Height = 239
+    Top = 0
+    Width = 484
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 3
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 8
+    Height = 23
+    Top = 72
+    Width = 80
+    Caption = '0.5-1.5∫ydx '
+    TabOrder = 2
+    OnClick = Button2Click
+  end
+  object Button4: TButton
+    Left = 8
+    Height = 23
+    Top = 136
+    Width = 80
+    Caption = '0-3∫ydx '
+    TabOrder = 3
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Left = 8
+    Height = 23
+    Top = 176
+    Width = 80
+    Caption = '0.5-1.5∫ydx '
+    TabOrder = 4
+    OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 8
+    Height = 23
+    Top = 216
+    Width = 80
+    Caption = '0.5-1.5∫ydx '
+    TabOrder = 5
+    OnClick = Button6Click
+  end
+  object ChartForceManual: TChart
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Memo1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = StatusBar1
+    Left = 0
+    Height = 258
+    Top = 239
+    Width = 575
+    AntialiasingMode = amOn
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Range.Max = 100
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Grid.Visible = False
+        Alignment = calBottom
+        Marks.LabelFont.Orientation = 900
+        Marks.Format = '%2:s'
+        Marks.LabelBrush.Style = bsClear
+        Marks.OverlapPolicy = opHideNeighbour
+        Marks.Source = ListChartSource5
+        Marks.Style = smsLabel
+        Minors = <>
+        Range.Max = 60
+        Range.UseMax = True
+        Range.UseMin = True
+        Title.Caption = 'Time Date'
+        Title.LabelBrush.Style = bsClear
+      end>
+    Extent.UseYMax = True
+    Extent.UseYMin = True
+    Extent.XMax = 60
+    Extent.YMax = 100
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Foot.Frame.Visible = True
+    Foot.Shape = clsUserDefined
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Toolset = ctDist
+    OnBeforeDrawBackground = ChartForceManualBeforeDrawBackground
+    OnBeforeDrawBackWall = ChartForceManualBeforeDrawBackWall
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    PopupMenu = PopupMenu1
+    OnMouseMove = ChartForceManualMouseMove
+    object ChartForceManualLineSeries5: TLineSeries
+      AxisIndexX = 1
+      AxisIndexY = 0
+      LinePen.Color = clRed
+      LinePen.Width = 2
+      Source = ListChartSource5
+    end
+    object ChartForceManualAreaSeries1: TAreaSeries
+      Source = ListChartSource5
+    end
+    object ChartForceManualLineSeries6: TLineSeries
+      Active = False
+      ZPosition = 2147483647
+      Source = ListChartSource6
+    end
+    object ChartForceManualLineSeries7: TLineSeries
+      Active = False
+      ZPosition = 2147483647
+      Source = ListChartSource7
+    end
+    object ChartForceManualConstantLine1: TConstantLine
+      Pen.Color = clBlue
+      Pen.Style = psDashDotDot
+      Position = 10
+      ZPosition = 2147483647
+    end
+    object ChartForceManualConstantLine2: TConstantLine
+      LineStyle = lsVertical
+      Pen.Color = clBlue
+      Pen.Style = psDashDotDot
+      Position = 10
+      ZPosition = 2147483647
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 497
+    Width = 575
+    Panels = <>
+  end
+  object mDistanceText: TMemo
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 8
+    Height = 40
+    Top = 96
+    Width = 128
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Lines.Strings = (
+      'axis dist = %0:.4g'
+      'graph dist = %1:.4g'
+    )
+    TabOrder = 8
+    Visible = False
+    OnChange = mDistanceTextChange
+    OnEditingDone = mDistanceTextEditingDone
+  end
+  object CheckBox1: TCheckBox
+    Left = 8
+    Height = 19
+    Top = 7
+    Width = 67
+    Caption = 'Crosshair'
+    Checked = True
+    Enabled = False
+    State = cbChecked
+    TabOrder = 9
+    OnChange = CheckBox1Change
+    OnEditingDone = CheckBox1EditingDone
+  end
+  object ListChartSource5: TListChartSource
+    Left = 244
+    Top = 28
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 244
+    Top = 88
+    object MenuItem1: TMenuItem
+      Caption = 'CopyToClipboard'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'SaveToBMP'
+      OnClick = MenuItem2Click
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'SaveToWMF'
+      OnClick = MenuItem3Click
+    end
+  end
+  object ctDist: TChartToolset
+    Left = 244
+    Top = 160
+    object ctCrosshair: TDataPointCrosshairTool
+      OnAfterMouseMove = ctCrosshairAfterMouseMove
+      GrabRadius = 1600
+      OnDraw = ctCrosshairDraw
+      CrosshairPen.Color = clMaroon
+      CrosshairPen.Style = psDashDotDot
+      Shape = ccsNone
+      Size = 1600
+    end
+    object Drag: TDataPointDistanceTool
+      Shift = [ssLeft]
+      OnAfterMouseMove = DragAfterMouseMove
+      OnBeforeKeyDown = DragBeforeKeyDown
+      OnBeforeKeyUp = DragBeforeKeyUp
+      OnBeforeMouseMove = DragBeforeMouseMove
+      DrawingMode = tdmNormal
+      LinePen.Width = 2
+      Marks.Distance = 30
+      Marks.Format = 'dist='#13#10'%0:.9g / %1:.9g'
+      Marks.LabelBrush.Color = clSkyBlue
+      Marks.LinkPen.Color = clBlue
+      Options = [dpdoPermanent]
+      PointerEnd.Brush.Style = bsClear
+      PointerEnd.VertSize = 1000
+      PointerEnd.Visible = True
+      PointerStart.Brush.Style = bsClear
+      PointerStart.Pen.Color = clRed
+      PointerStart.VertSize = 1000
+      PointerStart.Visible = True
+      OnMeasure = DragMeasure
+    end
+    object Ctrl_Drag: TDataPointDistanceTool
+      Shift = [ssCtrl, ssLeft]
+      DrawingMode = tdmNormal
+      Marks.Format = '%0:.9g'
+      Options = [dpdoPermanent]
+      PointerEnd.HorizSize = 8
+      PointerEnd.Style = psRightTriangle
+      PointerEnd.VertSize = 8
+      PointerEnd.Visible = True
+      PointerStart.Brush.Style = bsClear
+      PointerStart.Style = psLeftBracket
+      PointerStart.VertSize = 8
+      PointerStart.Visible = True
+      OnMeasure = Ctrl_DragMeasure
+    end
+    object ctDistPanMouseWheelTool1: TPanMouseWheelTool
+    end
+  end
+  object ListChartSource6: TListChartSource
+    DataPoints.Strings = (
+      '2|0|?|'
+      '2|1000|?|'
+    )
+    Left = 332
+    Top = 16
+  end
+  object ListChartSource7: TListChartSource
+    DataPoints.Strings = (
+      '0|2|?|'
+      '60|2|?|'
+    )
+    Left = 332
+    Top = 60
+  end
+end
